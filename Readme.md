@@ -13,7 +13,7 @@ Note: To ensure that the numpy masks are compatible, please run the following sc
 
 ` (cellvit_env) user@host: ~/classifier_training_project$ python3 process_wsi_for_classifier.py --batch "batch1" --slide_path "/your/slide/filepath/here" --annotation_file "./annotations/batch1/your_annotation_file_here.geojson" --tiles_dir "./tiles/batch1" --labels_dir "./labels/batch1" `
 
-The tiles will be named as "{uid}_tile_{index}.png" and are 256x256 RGB images and the corresponding labels will be "{uid}_tile_{index}.npy"
+The tiles will be named as `{uid}_tile_{index}.png` and are 256x256 RGB images and the corresponding labels will be `{uid}_tile_{index}.npy`
 
 ### Step 2: Transfer the generated image tiles and labels to the CellViT++ directory
 
@@ -28,4 +28,4 @@ TO DO: Create a branch of the repository with the defined changes for the CellVi
 
 Then, the detect_cells.py script can also be run on the selected run from the logs_local directory:
 
-`(cellvit_env) user@host: python3 ./cellvit/detect_cells.py --model ./checkpoints/CellViT-256-x40-AMP.pth --outdir ./test_results --classifier_path ./logs_local/run_timestamp_cellvit++/checkpoints/model_best.pth process_wsi --wsi_path ./example_images/filepath_to_your_wsi`
+`(cellvit_env) user@host: python3 -m cellvit.detect_cells --model ./checkpoints/CellViT-256-x40-AMP.pth --outdir ./test_results --classifier_path ./logs_local/run_timestamp_cellvit++/checkpoints/model_best.pth process_wsi --wsi_path ./example_images/filepath_to_your_wsi`
